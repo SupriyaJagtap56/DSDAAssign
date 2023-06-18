@@ -84,10 +84,11 @@ function convertToBytes(binaryString) {
   return Uint8Array.from(bytes);
 }
 
-const inputImage = "Input-Image-1.png";
+const inputImage = "input_image.png";
 // Example usage
 async function main() {
   // Load the image using sharp
+
   const fs = require("fs");
 
   const image = await sharp(inputImage).raw().toBuffer();
@@ -119,9 +120,7 @@ async function main() {
 
   // Save the compressed image
   fs.writeFileSync("compressed_image.bin", compressedBytes);
-
   console.log("Image compression complete!");
-
   fs.writeFileSync(
     "compressed_image_data.json",
     JSON.stringify({
@@ -132,13 +131,8 @@ async function main() {
   console.log(huffmanCodes);
   return { huffmanCodes, huffmanTree };
 }
-
 main();
-
 exports.main = main;
-
-// // const { huffmanCodes, huffmanTree } = main();
-
 // exports.huffmanCodes = huffmanCodes;
 // exports.huffmanTree = huffmanTree;
 
